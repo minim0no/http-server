@@ -4,7 +4,7 @@
 class TcpServer
 {
     // constructors/destructors
-    TcpServer::TcpServer(std::string ip_address, int port) : m_ip_address(ip_address), m_port(port)
+    TcpServer(std::string ip_address, int port) : m_ip_address(ip_address), m_port(port)
     {
         m_socketAddress.sin_family = AF_INET;
         m_socketAddress.sin_port = htons(m_port);
@@ -21,7 +21,7 @@ class TcpServer
             exit(0);
         }
     }
-    TcpServer::~TcpServer()
+    ~TcpServer()
     {
         try
         {
@@ -34,7 +34,7 @@ class TcpServer
         exit(0);
     }
 
-    TcpServer::startServer()
+    void startServer()
     {
         m_socket = socket(AF_INET, SOCK_STREAM, 0);
         if (m_socket == -1)
@@ -48,11 +48,11 @@ class TcpServer
         }
     }
 
-    TcpServer::closeServer()
+    void closeServer()
     {
         if (close(m_socket) == -1)
         {
             throw std::runtime_error("Cannot close socket");
         }
     }
-}
+};

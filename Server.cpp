@@ -1,6 +1,6 @@
 #include <http_tcpServer.hpp>
 
-
-int main() {
+int main()
+{
     TcpServer server = TcpServer();
 }
